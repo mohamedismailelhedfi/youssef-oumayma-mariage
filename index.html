@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Youssef &amp; Oumayma — Notre Mariage</title>
-<meta name="description" content="Vous êtes cordialement invités au mariage de Youssef et Oumayma.">
+<title>Youssef &amp; Oumaima — Notre Mariage</title>
+<meta name="description" content="Vous êtes cordialement invités au mariage de Youssef et Oumaima.">
 <meta name="theme-color" content="#4a2c17">
 
 <!-- ===================================================================
      HOW TO CUSTOMIZE THIS FILE
      1. Search for "EDIT ME" — every real-world detail you need to fill in
-        (date, venues, address, map link, RSVP contact) lives there.
+        (dates, venues, map links) lives there.
      2. All wording in BOTH languages lives in one place: the `translations`
         object near the bottom, inside the <script> tag.
      3. Colors & fonts are CSS variables near the top of <style> — the
@@ -18,6 +18,12 @@
      4. The whole invitation is a vertical deck of "postcards" — one
         slide per screen. On phones people swipe up/down; on desktop
         there are arrow buttons and dots. See the #slides section.
+
+     NOTE ON DATES: the Wteya date/time (28 Aug 2026, 21:30) was given
+     directly. The wedding's date wasn't specified — only its time (20:00)
+     and venue — so it's currently set to the day after the Wteya
+     (29 Aug 2026), the usual order. Search "EDIT ME: wedding date" below
+     and in the `translations` object if that's not correct.
      =================================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,16 +33,16 @@
 <style>
   :root{
     /* ---- EDIT ME: classic palette — white background, brown & gold ---- */
-    --sea-deep:   #4a2c17;   /* deep brown — headings, primary text */
-    --sea:        #7a5233;  /* medium brown — secondary surfaces */
-    --turquoise:  #c9a227;  /* (unused hue slot, aliased to gold) */
-    --coral:      #9c7c58;  /* muted brown accent, eyebrows */
-    --gold:       #c9a227;  /* main gold accent */
-    --sand:       #ffffff;  /* white background */
-    --sand-2:     #faf3e6;  /* warm ivory for section alternation */
-    --ink:        #5c3a21;  /* body text on light bg */
-    --cream-text: #fdf6e8;  /* light text for use on brown/dark chrome */
-    --gold-light: #e8cf86;  /* pale gold for hover states */
+    --sea-deep:   #4a2c17;
+    --sea:        #7a5233;
+    --turquoise:  #c9a227;
+    --coral:      #9c7c58;
+    --gold:       #c9a227;
+    --sand:       #ffffff;
+    --sand-2:     #faf3e6;
+    --ink:        #5c3a21;
+    --cream-text: #fdf6e8;
+    --gold-light: #e8cf86;
 
     --serif-script: 'Tangerine', cursive;
     --serif-display: 'Cormorant Garamond', serif;
@@ -46,7 +52,7 @@
 
     --radius-lg: 28px;
     --radius-md: 20px;
-    --vh: 1svh; /* set by JS fallback for older browsers */
+    --vh: 1svh;
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -56,7 +62,7 @@
     background: var(--sand);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
-    overflow:hidden; /* the slide deck owns scrolling */
+    overflow:hidden;
   }
   img{max-width:100%; display:block;}
   a{color:inherit;}
@@ -67,19 +73,21 @@
   [dir="rtl"] .slide-title,
   [dir="rtl"] .hero-sub,
   [dir="rtl"] .card h3,
+  [dir="rtl"] .venue-name,
   [dir="rtl"] .monogram,
   [dir="rtl"] .gate-title{ font-family: var(--arabic); }
   [dir="rtl"] .eyebrow,
   [dir="rtl"] .cd-label,
   [dir="rtl"] .directions-btn,
-  [dir="rtl"] .rsvp-btn,
   [dir="rtl"] .lang-btn,
   [dir="rtl"] .page-count{ font-family: var(--arabic); letter-spacing:0; text-transform:none; }
   [dir="rtl"] .hero-sub{ font-style:normal; line-height:2; }
-  [dir="rtl"] .card p{ line-height: 2; }
-  /* vertical deck: chevrons no longer need horizontal mirroring in RTL */
+  [dir="rtl"] .hero .eyebrow{ line-height:1.9; }
+  [dir="rtl"] .card p, [dir="rtl"] .detail-card p{ line-height: 2; }
+  [dir="rtl"] .venue-name{ text-align:right; }
 
   .ltr-num{ direction: ltr; unicode-bidi: isolate; display:inline-block; }
+  bdi{ unicode-bidi: isolate; }
 
   .eyebrow{
     font-family: var(--serif-display);
@@ -112,7 +120,6 @@
   .divider .line{flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);}
   .divider svg{width:20px; height:20px; flex-shrink:0;}
 
-  /* postcard perforation edge, used at top/bottom of each slide's card */
   .postcard-edge{
     height:10px;
     background-image: radial-gradient(circle, rgba(255,248,236,.9) 2.2px, transparent 2.3px);
@@ -203,7 +210,6 @@
     width:100%;
   }
 
-  /* reveal-on-view animation for slide contents */
   .reveal{ opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in-view .reveal{ opacity:1; transform:translateY(0); }
   .reveal:nth-child(1){ transition-delay:.05s; }
@@ -212,7 +218,6 @@
   .reveal:nth-child(4){ transition-delay:.35s; }
   .reveal:nth-child(5){ transition-delay:.45s; }
 
-  /* colour themes per slide — both are light; slide-dark carries a warmer ivory tone */
   .slide-dark{ background: linear-gradient(170deg, #fffdf8, #f3e6c8); color: var(--sea-deep); }
   .slide-light{ background: linear-gradient(180deg, var(--sand), var(--sand-2)); color: var(--ink); }
 
@@ -222,9 +227,14 @@
     font-size: 1.05rem;
     color: var(--gold);
     opacity:.95;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.3rem;
   }
-  .hero .eyebrow{ color: var(--gold); margin-bottom: 1.2rem; }
+  .hero .eyebrow{
+    color: var(--sea); margin-bottom: 1.3rem;
+    letter-spacing:.02em; text-transform:none; font-style:italic;
+    font-size:.92rem; line-height:1.6; max-width:420px; margin-inline:auto;
+    font-weight:400;
+  }
   .names{
     font-family: var(--serif-script);
     font-weight: 700;
@@ -232,6 +242,7 @@
     line-height: 1;
     color: var(--sea-deep);
     text-shadow: 0 0 34px rgba(201,162,39,.22);
+    margin-top:.2rem;
   }
   .names .amp{ color: var(--gold); font-size: .68em; padding: 0 .04em; }
   .hero-sub{
@@ -325,41 +336,34 @@
   }
 
   /* ---------------- LOCATION ---------------- */
+  .venue-name{
+    font-family: var(--serif-display); font-weight:600; font-size:1.12rem;
+    color: var(--sea-deep); margin-top:1.8rem; margin-bottom:.4rem;
+    text-align:center;
+  }
+  .venues-wrap .venue-name:first-child{ margin-top:0; }
+  .venue-name .tag{ font-family: var(--serif-display); font-style:italic; font-size:.76rem; color: var(--gold); margin-inline-start:.5em; }
   .map-wrap{
-    margin-top: 1.8rem; width:100%;
+    margin-top: .3rem; width:100%;
     border: 1px solid var(--gold);
-    padding: 8px;
+    padding: 7px;
     background: #fff;
     border-radius: var(--radius-lg);
     box-shadow: 0 20px 44px -24px rgba(74,44,23,.25);
   }
-  .map-frame{ width:100%; aspect-ratio: 4/3; border:0; border-radius: calc(var(--radius-lg) - 8px); }
+  .map-frame{ width:100%; aspect-ratio: 16/10; border:0; border-radius: calc(var(--radius-lg) - 7px); }
   .directions-btn{
-    display:inline-block; margin-top:1.6rem;
-    font-family: var(--serif-display); letter-spacing:.12em; text-transform:uppercase;
-    font-size:.82rem; text-decoration:none;
+    display:inline-block; margin-top:.9rem;
+    font-family: var(--serif-display); letter-spacing:.1em; text-transform:uppercase;
+    font-size:.76rem; text-decoration:none;
     color: var(--cream-text); background: var(--sea);
-    padding: .95rem 2.3rem; border:1px solid var(--gold);
+    padding: .75rem 1.7rem; border:1px solid var(--gold);
     border-radius: 999px;
     transition: background .25s ease, color .25s ease, transform .2s ease;
   }
   .directions-btn:active{ transform: scale(.96); }
   @media (hover:hover){ .directions-btn:hover{ background: var(--gold); color: var(--sea-deep); } }
-
-  /* ---------------- RSVP ---------------- */
-  .rsvp-btn{
-    display:inline-block; margin-top: 1.8rem;
-    font-family: var(--serif-display); letter-spacing:.16em; text-transform:uppercase;
-    font-size:.86rem; text-decoration:none;
-    color: var(--sea-deep); background: var(--gold);
-    padding: 1.05rem 2.8rem; border: 1px solid var(--gold);
-    border-radius: 999px;
-    box-shadow: 0 18px 36px -14px rgba(201,162,39,.5);
-    transition: transform .2s ease, background .25s ease;
-  }
-  .rsvp-btn:active{ transform: scale(.96); }
-  @media (hover:hover){ .rsvp-btn:hover{ background: var(--gold-light); } }
-  .rsvp-deadline{ margin-top:1.2rem; font-size:.82rem; letter-spacing:.04em; color: var(--gold); }
+  .venues-wrap{ width:100%; }
 
   /* ---------------- THANK YOU / FOOTER SLIDE ---------------- */
   .monogram{ font-family: var(--serif-script); font-size: 3.4rem; color: var(--gold); }
@@ -446,7 +450,7 @@
 <div id="gate">
   <div class="wave-bg"></div>
   <div class="gate-inner">
-    <p class="gate-title" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumayma</p>
+    <p class="gate-title" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumaima</p>
     <p class="gate-subtitle" id="gate-subtitle">Choisissez votre langue · اختر لغتك</p>
     <div class="lang-choices">
       <button class="lang-btn" data-lang="fr">Français</button>
@@ -475,15 +479,15 @@
   <div id="slides">
 
     <!-- SLIDE 1 — HERO -->
-    <section class="slide slide-dark" data-title="Youssef &amp; Oumayma">
+    <section class="slide slide-dark" data-title="Youssef &amp; Oumaima">
       <div class="wave-bg"></div>
       <div class="slide-inner">
         <p class="arabic-line reveal">بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ</p>
-        <p class="eyebrow reveal" data-i18n="hero.eyebrow">Nous nous marions</p>
-        <h1 class="names reveal" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumayma</h1>
+        <p class="eyebrow reveal" data-i18n="hero.invite">La famille de Mourad Mokdadi et la famille de Mustafa Lamti sont honorées de vous convier au mariage de leurs enfants</p>
+        <h1 class="names reveal" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumaima</h1>
         <p class="hero-sub reveal" data-i18n="hero.sub">« Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses… »</p>
-        <!-- EDIT ME: wedding date & city -->
-        <p class="hero-date reveal" data-i18n="hero.date">12 <span>Décembre</span> 2026 — Tunis, Tunisie</p>
+        <!-- EDIT ME: wedding date & cities -->
+        <p class="hero-date reveal" data-i18n="hero.date">28 <span>Août</span> 2026 — M'saken &amp; Kairouan, Tunisie</p>
       </div>
       <div class="swipe-hint" id="swipe-hint">
         <span data-i18n="hero.scroll">Glissez vers le haut</span>
@@ -507,67 +511,79 @@
           <div class="cd-unit"><div class="cd-num ltr-num" id="cd-mins">00</div><div class="cd-label" data-i18n="countdown.mins">Minutes</div></div>
           <div class="cd-unit"><div class="cd-num ltr-num" id="cd-secs">00</div><div class="cd-label" data-i18n="countdown.secs">Secondes</div></div>
         </div>
-        <p class="countdown-note reveal" id="countdown-note" data-i18n="countdown.note">Nous avons hâte de célébrer ce jour avec vous.</p>
+        <p class="countdown-note reveal" id="countdown-note" data-i18n="countdown.note">Nous avons hâte de célébrer ces jours avec vous.</p>
       </div>
     </section>
 
-    <!-- SLIDE 3 — DETAILS (ceremony + reception, one page like the original layout) -->
+    <!-- SLIDE 3 — DETAILS: WTEYA + MARIAGE -->
     <section class="slide slide-dark" data-title="Détails">
       <div class="wave-bg"></div>
       <div class="slide-inner">
         <p class="eyebrow reveal" style="color:var(--gold)" data-i18n="details.eyebrow">Le programme</p>
-        <h2 class="slide-title reveal" data-i18n="details.title">Détails de la journée</h2>
+        <h2 class="slide-title reveal" data-i18n="details.title">Détails de la célébration</h2>
 
         <div class="details-grid">
           <div class="detail-card reveal">
             <div class="card-icon-wrap">
-              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2v4M8 4v4M16 4v4M4 8h16M5 8v12a1 1 0 001 1h12a1 1 0 001-1V8"/></svg>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v4M5 8l2 2M19 8l-2 2M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
             </div>
-            <h3 data-i18n="details.ceremonyTitle">Cérémonie</h3>
+            <h3 data-i18n="details.wteyaTitle">La Wteya</h3>
+            <p data-i18n="details.wteyaText">Une soirée traditionnelle pour célébrer les préparatifs avant le grand jour.</p>
             <!-- EDIT ME -->
-            <p data-i18n="details.ceremonyText">La cérémonie religieuse aura lieu en comité restreint, suivie d'un moment convivial pour les proches.</p>
-            <p class="detail-meta" data-i18n="details.ceremonyMeta">12 Décembre 2026 — 15h00<br>Mosquée / Salle des fêtes, Tunis</p>
+            <p class="detail-meta" data-i18n="details.wteyaMeta">28 Août 2026 — 21h30<br>Salle des fêtes The Queen, M'saken</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="card-icon-wrap">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 21v-7a4 4 0 014-4h8a4 4 0 014 4v7M4 21h16M8 10V6a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+            </div>
+            <h3 data-i18n="details.weddingTitle">Le Mariage</h3>
+            <p data-i18n="details.weddingText">Dîner, musique et danse pour célébrer ensemble ce jour unique.</p>
+            <!-- EDIT ME: confirm this date -->
+            <p class="detail-meta" data-i18n="details.weddingMeta">29 Août 2026 — 20h00<br>Salle des fêtes Champs Élysées, Kairouan</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 5 — LOCATION -->
-    <section class="slide slide-dark" data-title="Lieu" id="location">
+    <!-- SLIDE 4 — LOCATIONS (both venues) -->
+    <section class="slide slide-dark" data-title="Lieux" id="location">
       <div class="wave-bg"></div>
       <div class="slide-inner">
         <p class="eyebrow reveal" style="color:var(--gold)" data-i18n="location.eyebrow">Comment nous rejoindre</p>
-        <h2 class="slide-title reveal" data-i18n="location.title">Le lieu de la réception</h2>
-        <div class="map-wrap reveal">
-          <!-- EDIT ME: replace src with your venue's Google Maps embed link -->
-          <iframe class="map-frame"
-            src="https://www.google.com/maps?q=Tunis,Tunisia&output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Carte du lieu de réception"></iframe>
+        <h2 class="slide-title reveal" data-i18n="location.title">Les lieux de la célébration</h2>
+
+        <div class="venues-wrap reveal">
+          <p class="venue-name"><bdi>Salle des fêtes The Queen</bdi> — <span data-i18n="location.venue1City">M'saken</span> <span class="tag" data-i18n="location.venue1Tag">(Wteya)</span></p>
+          <div class="map-wrap">
+            <!-- EDIT ME: replace src with this venue's Google Maps embed link -->
+            <iframe class="map-frame"
+              src="https://www.google.com/maps?q=Salle+des+fêtes+The+Queen+M%27saken+Tunisie&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Salle des fêtes The Queen, M'saken"></iframe>
+          </div>
+          <!-- EDIT ME -->
+          <a class="directions-btn" href="https://maps.google.com/?q=Salle+des+fêtes+The+Queen+M%27saken+Tunisie" target="_blank" rel="noopener" data-i18n="location.directions">Obtenir l'itinéraire</a>
+
+          <p class="venue-name"><bdi>Salle des fêtes Champs Élysées</bdi> — <span data-i18n="location.venue2City">Kairouan</span> <span class="tag" data-i18n="location.venue2Tag">(Mariage)</span></p>
+          <div class="map-wrap">
+            <!-- EDIT ME: replace src with this venue's Google Maps embed link -->
+            <iframe class="map-frame"
+              src="https://www.google.com/maps?q=Salle+des+fêtes+Champs+Élysées+Kairouan+Tunisie&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Salle des fêtes Champs Élysées, Kairouan"></iframe>
+          </div>
+          <!-- EDIT ME -->
+          <a class="directions-btn" href="https://maps.google.com/?q=Salle+des+fêtes+Champs+Élysées+Kairouan+Tunisie" target="_blank" rel="noopener" data-i18n="location.directions">Obtenir l'itinéraire</a>
         </div>
-        <!-- EDIT ME -->
-        <a class="directions-btn reveal" href="https://maps.google.com/?q=Tunis,Tunisia" target="_blank" rel="noopener" data-i18n="location.directions">Obtenir l'itinéraire</a>
       </div>
     </section>
 
-    <!-- SLIDE 6 — RSVP -->
-    <section class="slide slide-light" data-title="RSVP" id="rsvp">
-      <div class="slide-inner">
-        <p class="eyebrow reveal" style="color:var(--coral)" data-i18n="rsvp.eyebrow">RSVP</p>
-        <h2 class="slide-title reveal" data-i18n="rsvp.title">Confirmez votre présence</h2>
-        <p class="detail-text reveal" data-i18n="rsvp.text">Votre présence est le plus beau des cadeaux. Merci de confirmer avant la date indiquée ci-dessous afin que nous puissions tout organiser au mieux.</p>
-        <!-- EDIT ME -->
-        <a class="rsvp-btn reveal" href="mailto:youssef.oumayma.mariage@example.com?subject=Confirmation%20de%20présence" data-i18n="rsvp.btn">Confirmer ma présence</a>
-        <p class="rsvp-deadline reveal" style="color:var(--coral)" data-i18n="rsvp.deadline">Merci de répondre avant le 1er Novembre 2026</p>
-      </div>
-    </section>
-
-    <!-- SLIDE 7 — THANK YOU -->
+    <!-- SLIDE 5 — THANK YOU -->
     <section class="slide slide-dark" data-title="Merci">
       <div class="wave-bg"></div>
       <div class="slide-inner">
         <div class="monogram reveal" data-i18n="names.monogram">Y &amp; O</div>
-        <p class="footer-line reveal" data-i18n="footer.line">12 Décembre 2026 · Tunis, Tunisie</p>
+        <p class="footer-line reveal" data-i18n="footer.line">28–29 Août 2026 · M'saken &amp; Kairouan, Tunisie</p>
       </div>
     </section>
 
@@ -581,45 +597,42 @@
   const translations = {
     fr: {
       names: {
-        full: 'Youssef<span class="amp">&amp;</span>Oumayma',
+        full: 'Youssef<span class="amp">&amp;</span>Oumaima',
         monogram: 'Y <span class="amp">&amp;</span> O'
       },
       hero: {
-        eyebrow: "Nous nous marions",
+        invite: "La famille de Mourad Mokdadi et la famille de Mustafa Lamti sont honorées de vous convier au mariage de leurs enfants",
         sub: "« Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses afin que vous viviez en tranquillité avec elles… »",
-        date: '12 <span>Décembre</span> 2026 — Tunis, Tunisie',
+        date: '28 <span>Août</span> 2026 — M\'saken &amp; Kairouan, Tunisie',
         scroll: "Glissez vers le haut"
       },
       countdown: {
         eyebrow: "Le compte à rebours",
         title: "Il reste encore un peu de patience…",
-        note: "Nous avons hâte de célébrer ce jour avec vous.",
+        note: "Nous avons hâte de célébrer ces jours avec vous.",
         doneNote: "Aujourd'hui, nous célébrons ! 🤍",
         days: "Jours", hours: "Heures", mins: "Minutes", secs: "Secondes"
       },
       details: {
         eyebrow: "Le programme",
-        title: "Détails de la journée",
-        ceremonyTitle: "Cérémonie",
-        ceremonyText: "La cérémonie religieuse aura lieu en comité restreint, suivie d'un moment convivial pour les proches.",
-        ceremonyMeta: "12 Décembre 2026 — 15h00<br>Mosquée / Salle des fêtes, Tunis",
-        receptionTitle: "Réception",
-        receptionText: "Dîner, musique et danse pour célébrer ensemble jusque tard dans la nuit. Tenue de soirée souhaitée.",
-        receptionMeta: "12 Décembre 2026 — 19h30<br>Domaine El Bousten, La Soukra, Tunis"
+        title: "Détails de la célébration",
+        wteyaTitle: "La Wteya",
+        wteyaText: "Une soirée traditionnelle pour célébrer les préparatifs avant le grand jour.",
+        wteyaMeta: "28 Août 2026 — 21h30<br><bdi>Salle des fêtes The Queen</bdi>, M'saken",
+        weddingTitle: "Le Mariage",
+        weddingText: "Dîner, musique et danse pour célébrer ensemble ce jour unique.",
+        weddingMeta: "29 Août 2026 — 20h00<br><bdi>Salle des fêtes Champs Élysées</bdi>, Kairouan"
       },
       location: {
         eyebrow: "Comment nous rejoindre",
-        title: "Le lieu de la réception",
+        title: "Les lieux de la célébration",
+        venue1City: "M'saken",
+        venue1Tag: "(Wteya)",
+        venue2City: "Kairouan",
+        venue2Tag: "(Mariage)",
         directions: "Obtenir l'itinéraire"
       },
-      rsvp: {
-        eyebrow: "RSVP",
-        title: "Confirmez votre présence",
-        text: "Votre présence est le plus beau des cadeaux. Merci de confirmer avant la date indiquée ci-dessous afin que nous puissions tout organiser au mieux.",
-        btn: "Confirmer ma présence",
-        deadline: "Merci de répondre avant le 1er Novembre 2026"
-      },
-      footer: { line: "12 Décembre 2026 · Tunis, Tunisie" },
+      footer: { line: "28–29 Août 2026 · M'saken &amp; Kairouan, Tunisie" },
       gateSubtitle: "Choisissez votre langue · اختر لغتك"
     },
     ar: {
@@ -628,41 +641,38 @@
         monogram: 'ي <span class="amp">و</span> أ'
       },
       hero: {
-        eyebrow: "نحتفل بزفافنا",
+        invite: "تتشرف عائلة مراد مقدادي وعائلة مصطفى لمطي بدعوتكم لحضور حفل زفاف ابنيهما",
         sub: "«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً»",
-        date: '<span dir="ltr" class="ltr-num">12 ديسمبر 2026</span> — تونس، تونس',
+        date: '<bdi>28</bdi> أوت <bdi>2026</bdi> — مساكن والقيروان، تونس',
         scroll: "اسحب للأعلى لتكتشف المزيد"
       },
       countdown: {
         eyebrow: "العد التنازلي",
         title: "لم يتبقَّ سوى القليل من الصبر…",
-        note: "لا يسعنا الانتظار للاحتفال بهذا اليوم معكم.",
+        note: "لا يسعنا الانتظار للاحتفال بهذه الأيام معكم.",
         doneNote: "اليوم، نحتفل! 🤍",
         days: "أيام", hours: "ساعات", mins: "دقائق", secs: "ثواني"
       },
       details: {
-        eyebrow: "برنامج اليوم",
-        title: "تفاصيل اليوم",
-        ceremonyTitle: "مراسم العقد",
-        ceremonyText: "ستقام المراسم الدينية في نطاق ضيق، تليها لحظة ودية مع الأحبة.",
-        ceremonyMeta: '<span dir="ltr" class="ltr-num">12 ديسمبر 2026 — 15:00</span><br>مسجد / قاعة أفراح، تونس',
-        receptionTitle: "حفل الاستقبال",
-        receptionText: "عشاء وموسيقى ورقص للاحتفال معًا حتى وقت متأخر من الليل. يُستحسن ارتداء ملابس السهرة.",
-        receptionMeta: '<span dir="ltr" class="ltr-num">12 ديسمبر 2026 — 19:30</span><br>دومين البستان، السكرة، تونس'
+        eyebrow: "برنامج الاحتفال",
+        title: "تفاصيل الاحتفال",
+        wteyaTitle: "الوطية",
+        wteyaText: "أمسية تقليدية للاحتفال بالتحضيرات قبل يوم الزفاف.",
+        wteyaMeta: '<bdi>28</bdi> أوت <bdi>2026</bdi> — <bdi>21:30</bdi><br><bdi>Salle des fêtes The Queen</bdi>، مساكن',
+        weddingTitle: "حفل الزفاف",
+        weddingText: "عشاء وموسيقى ورقص للاحتفال معًا بهذا اليوم الفريد.",
+        weddingMeta: '<bdi>29</bdi> أوت <bdi>2026</bdi> — <bdi>20:00</bdi><br><bdi>Salle des fêtes Champs Élysées</bdi>، القيروان'
       },
       location: {
         eyebrow: "كيف تصلون إلينا",
-        title: "موقع حفل الاستقبال",
+        title: "مواقع الاحتفال",
+        venue1City: "مساكن",
+        venue1Tag: "(الوطية)",
+        venue2City: "القيروان",
+        venue2Tag: "(الزفاف)",
         directions: "احصل على الاتجاهات"
       },
-      rsvp: {
-        eyebrow: "تأكيد الحضور",
-        title: "أكدوا حضوركم",
-        text: "حضوركم هو أجمل هدية. يرجى التأكيد قبل التاريخ المحدد أدناه لنتمكن من التحضير على أكمل وجه.",
-        btn: "تأكيد الحضور",
-        deadline: "يرجى الرد قبل 1 نوفمبر 2026"
-      },
-      footer: { line: '<span dir="ltr" class="ltr-num">12 ديسمبر 2026</span> · تونس' },
+      footer: { line: '<bdi>28–29</bdi> أوت <bdi>2026</bdi> · مساكن والقيروان، تونس' },
       gateSubtitle: "اختر لغتك · Choisissez votre langue"
     }
   };
@@ -757,9 +767,13 @@
     if (e.key === 'ArrowUp' || e.key === 'PageUp') document.getElementById('arrow-prev').click();
   });
 
-  /* ---------------- COUNTDOWN ---------------- */
-  // EDIT ME: exact wedding date & time (local time of the venue)
-  const WEDDING_DATE = new Date("2026-12-12T15:00:00");
+  /* ---------------- COUNTDOWN ----------------
+     Counts down to the Wteya (28 Aug, 21:30) — the first celebration.
+     The wedding's date wasn't given explicitly (only its time, 20:00),
+     so it's set here to the day after the Wteya. Change either date
+     below, or the WEDDING_DATE target, if that's not correct. */
+  // EDIT ME: exact date & time
+  const WEDDING_DATE = new Date("2026-08-28T21:30:00");
 
   const els = {
     days: document.getElementById('cd-days'),
