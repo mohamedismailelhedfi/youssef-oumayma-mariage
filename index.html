@@ -411,6 +411,23 @@
   }
   #lang-switch button.active{ background: var(--gold); color: var(--sea-deep); }
 
+  #music-toggle{
+    position:fixed; top: max(14px, env(safe-area-inset-top)); left:14px; z-index:60;
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(74,44,23,.55); backdrop-filter: blur(6px);
+    border: 1px solid rgba(201,162,39,.4); color: var(--cream-text);
+    cursor:pointer; opacity:0; pointer-events:none;
+    transition: opacity .5s ease, background .25s ease;
+  }
+  #music-toggle.visible{ opacity:1; pointer-events:auto; }
+  [dir="rtl"] #music-toggle{ left:auto; right:14px; }
+  #music-toggle svg{ width:16px; height:16px; }
+  #music-toggle .icon-off{ display:none; }
+  #music-toggle.muted .icon-on{ display:none; }
+  #music-toggle.muted .icon-off{ display:block; }
+  @media (hover:hover){ #music-toggle:hover{ background: rgba(74,44,23,.75); } }
+
   #dots{
     position:fixed; top:50%; right: max(6px, env(safe-area-inset-right));
     transform:translateY(-50%);
@@ -485,6 +502,19 @@
   <button data-lang="ar">ع</button>
 </div>
 
+<!-- ================= BACKGROUND MUSIC =================
+     EDIT ME: put your own licensed audio file at this path (e.g. an
+     mp3 you purchased/licensed) — see README.md for details. Autoplay
+     is tied to the language-choice click, since browsers require a
+     real user tap before audio can play with sound. -->
+<audio id="bg-music" loop preload="none">
+  <source src="audio/oud-taqsim.mp3" type="audio/mpeg">
+</audio>
+<button id="music-toggle" aria-label="Toggle background music">
+  <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M2 2l20 20" stroke="#e07a5f"/></svg>
+</button>
+
 <button id="arrow-prev" class="nav-arrow" aria-label="Précédent">
   <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
@@ -507,7 +537,7 @@
         <h1 class="names reveal" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumaima</h1>
         <p class="hero-sub reveal" data-i18n="hero.sub">« Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses… »</p>
         <!-- EDIT ME: wedding date & cities -->
-        <p class="hero-date reveal" data-i18n="hero.date">28-29 <span>Août</span> 2026 — M'saken &amp; Kairouan, Tunisie</p>
+        <p class="hero-date reveal" data-i18n="hero.date">28 <span>Août</span> 2026 — M'saken &amp; Kairouan, Tunisie</p>
       </div>
       <div class="swipe-hint" id="swipe-hint">
         <span data-i18n="hero.scroll">Glissez vers le haut</span>
@@ -544,12 +574,20 @@
 
         <div class="details-grid">
           <div class="detail-card reveal">
+            <div class="card-icon-wrap">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v4M5 8l2 2M19 8l-2 2M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
+            </div>
             <h3 data-i18n="details.wteyaTitle">La Wteya</h3>
+            <p data-i18n="details.wteyaText">Une soirée traditionnelle pour célébrer les préparatifs avant le grand jour.</p>
             <!-- EDIT ME -->
             <p class="detail-meta" data-i18n="details.wteyaMeta">28 Août 2026 — 21h30<br>Salle des fêtes The Queen, M'saken</p>
           </div>
           <div class="detail-card reveal">
+            <div class="card-icon-wrap">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 21v-7a4 4 0 014-4h8a4 4 0 014 4v7M4 21h16M8 10V6a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+            </div>
             <h3 data-i18n="details.weddingTitle">Le Mariage</h3>
+            <p data-i18n="details.weddingText">Dîner, musique et danse pour célébrer ensemble ce jour unique.</p>
             <!-- EDIT ME: confirm this date -->
             <p class="detail-meta" data-i18n="details.weddingMeta">29 Août 2026 — 20h00<br>Salle des fêtes Champs Élysées, Kairouan</p>
           </div>
@@ -561,6 +599,7 @@
     <section class="slide slide-dark" data-title="Lieux" id="location">
       <div class="wave-bg"></div>
       <div class="slide-inner">
+        <p class="eyebrow reveal" style="color:var(--gold)" data-i18n="location.eyebrow">Comment nous rejoindre</p>
         <h2 class="slide-title reveal" data-i18n="location.title">Les lieux de la célébration</h2>
 
         <div class="venues-wrap reveal">
@@ -725,6 +764,7 @@
   function openSite(){
     document.getElementById('gate').classList.add('gate-hidden');
     document.getElementById('lang-switch').classList.add('visible');
+    document.getElementById('music-toggle').classList.add('visible');
     document.getElementById('dots').classList.add('visible');
     document.querySelectorAll('.nav-arrow').forEach(a => a.classList.add('visible'));
     setTimeout(() => {
@@ -733,8 +773,31 @@
     }, 250);
   }
 
+  /* ---------------- BACKGROUND MUSIC ----------------
+     Playback starts on the language-choice tap (a real user gesture),
+     which satisfies Safari/Chrome's rule that audio-with-sound can't
+     autoplay without one. Add your own licensed file at
+     audio/oud-taqsim.mp3 — see README.md. */
+  const bgMusic = document.getElementById('bg-music');
+  const musicToggle = document.getElementById('music-toggle');
+
+  function startMusic(){
+    bgMusic.volume = 0.55;
+    bgMusic.play().catch(() => { /* file missing or blocked — fails silently */ });
+  }
+
+  musicToggle.addEventListener('click', () => {
+    if (bgMusic.paused){
+      bgMusic.play().catch(() => {});
+      musicToggle.classList.remove('muted');
+    } else {
+      bgMusic.pause();
+      musicToggle.classList.add('muted');
+    }
+  });
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => { applyLang(btn.dataset.lang); openSite(); });
+    btn.addEventListener('click', () => { applyLang(btn.dataset.lang); openSite(); startMusic(); });
   });
   document.querySelectorAll('#lang-switch button').forEach(btn => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
