@@ -1,7 +1,847 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8"><!DOCTYPE html>
+<html lang="fr">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Youssef &amp; Oumaima — Notre Mariage</title>
+<meta name="description" content="Vous êtes cordialement invités au mariage de Youssef et Oumaima.">
+<meta name="theme-color" content="#4a2c17">
+
+<!-- ===================================================================
+     HOW TO CUSTOMIZE THIS FILE
+     1. Search for "EDIT ME" — every real-world detail you need to fill in
+        (dates, venues, map links) lives there.
+     2. All wording in BOTH languages lives in one place: the `translations`
+        object near the bottom, inside the <script> tag.
+     3. Colors & fonts are CSS variables near the top of <style> — the
+        palette is white/ivory with brown and gold text and details.
+     4. The whole invitation is a vertical deck of "postcards" — one
+        slide per screen. On phones people swipe up/down; on desktop
+        there are arrow buttons and dots. See the #slides section.
+
+     NOTE ON DATES: the Wteya date/time (28 Aug 2026, 21:30) was given
+     directly. The wedding's date wasn't specified — only its time (20:00)
+     and venue — so it's currently set to the day after the Wteya
+     (29 Aug 2026), the usual order. Search "EDIT ME: wedding date" below
+     and in the `translations` object if that's not correct.
+     =================================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Amiri:ital@0;1&family=Amiri+Quran&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* ---- EDIT ME: classic palette — white background, brown & gold ---- */
+    --sea-deep:   #4a2c17;
+    --sea:        #7a5233;
+    --turquoise:  #c9a227;
+    --coral:      #9c7c58;
+    --gold:       #c9a227;
+    --sand:       #ffffff;
+    --sand-2:     #faf3e6;
+    --ink:        #5c3a21;
+    --cream-text: #fdf6e8;
+    --gold-light: #e8cf86;
+
+    --serif-script: 'Tangerine', cursive;
+    --serif-display: 'Cormorant Garamond', serif;
+    --serif-body: 'EB Garamond', serif;
+    --arabic: 'Amiri', serif;
+    --arabic-quran: 'Amiri Quran', 'Amiri', serif;
+
+    --radius-lg: 28px;
+    --radius-md: 20px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html, body{
+    height:100%;
+    height:100vh;
+    height:100dvh;
+    height:var(--app-vh, 100dvh);
+    overflow:hidden;
+    overscroll-behavior:none;
+  }
+  body{
+    font-family: var(--serif-body);
+    background: var(--sand);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  button{font:inherit;}
+
+  [dir="rtl"] body{ font-family: var(--arabic); }
+  [dir="rtl"] .names,
+  [dir="rtl"] .slide-title,
+  [dir="rtl"] .hero-sub,
+  [dir="rtl"] .card h3,
+  [dir="rtl"] .venue-name,
+  [dir="rtl"] .monogram,
+  [dir="rtl"] .gate-title{ font-family: var(--arabic); }
+  [dir="rtl"] .eyebrow,
+  [dir="rtl"] .cd-label,
+  [dir="rtl"] .directions-btn,
+  [dir="rtl"] .lang-btn,
+  [dir="rtl"] .page-count{ font-family: var(--arabic); letter-spacing:0; text-transform:none; }
+  [dir="rtl"] .hero-sub{ font-style:normal; line-height:2; }
+  [dir="rtl"] .hero .eyebrow{ line-height:1.9; }
+  [dir="rtl"] .card p, [dir="rtl"] .detail-card p{ line-height: 2; }
+
+  .ltr-num{ direction: ltr; unicode-bidi: isolate; display:inline-block; }
+  bdi{ unicode-bidi: isolate; }
+
+  .eyebrow{
+    font-family: var(--serif-display);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    font-size: .68rem;
+    font-weight: 500;
+  }
+
+  /* ---------------- signature motif: sun-wave (postcard from the coast) ---------------- */
+  .wave-bg{
+    position:absolute; inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(circle at 85% 8%, rgba(201,162,39,.18), transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'%3E%3Cpath d='M0 30 Q37.5 0 75 30 T150 30 T225 30 T300 30' fill='none' stroke='%23c9a227' stroke-width='1.4' opacity='0.3'/%3E%3Cpath d='M0 46 Q37.5 16 75 46 T150 46 T225 46 T300 46' fill='none' stroke='%239c7c58' stroke-width='1' opacity='0.22'/%3E%3C/svg%3E");
+    background-repeat: repeat, repeat-x;
+    background-position: 0 0, 0 bottom;
+    background-size: auto, 300px 60px;
+  }
+
+  .divider{
+    width:100%;
+    display:flex; align-items:center; justify-content:center;
+    gap: 12px;
+    margin: 0 auto;
+    max-width: 300px;
+    opacity:.9;
+  }
+  .divider .line{flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);}
+  .divider svg{width:20px; height:20px; flex-shrink:0;}
+
+  .postcard-edge{
+    height:10px;
+    background-image: radial-gradient(circle, rgba(255,248,236,.9) 2.2px, transparent 2.3px);
+    background-size: 16px 16px;
+    background-position: center;
+    opacity:.55;
+  }
+
+  /* ================= LANGUAGE GATE ================= */
+  #gate{
+    position:fixed; inset:0; z-index:300;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(165deg, var(--sand) 0%, var(--sand-2) 60%, #f3e6c8 100%);
+    color: var(--sea-deep);
+    text-align:center;
+    transition: transform 1s cubic-bezier(.65,0,.15,1), opacity .9s ease;
+  }
+  #gate .wave-bg{ opacity:.6; }
+  #gate.gate-hidden{ transform: translateY(-104%); opacity: 0; pointer-events:none; }
+  .gate-inner{ position:relative; z-index:2; padding: 6vh 8vw; max-width:560px; }
+  .gate-title{
+    font-family: var(--serif-script); font-weight:700;
+    font-size: clamp(3rem, 13vw, 5.2rem); color: var(--sea-deep);
+    line-height:1;
+  }
+  .gate-title .amp{ color: var(--gold); font-size:.75em; }
+  .gate-subtitle{
+    margin-top: 1.3rem; margin-bottom: 2.4rem;
+    font-family: var(--serif-display); font-style: italic; font-size: 1rem;
+    color: var(--sea); letter-spacing:.02em;
+  }
+  .lang-choices{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .lang-btn{
+    font-family: var(--serif-display); letter-spacing:.1em; text-transform:uppercase;
+    font-size:.9rem; cursor:pointer;
+    color: var(--sea-deep); background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: .95rem 2.4rem;
+    border-radius: 999px;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+    box-shadow: 0 10px 26px -8px rgba(201,162,39,.55);
+  }
+  .lang-btn.secondary{ background: transparent; color: var(--sea-deep); border-color: rgba(74,44,23,.4); }
+  .lang-btn:active{ transform: scale(.96); }
+  @media (hover:hover){
+    .lang-btn:hover{ transform: translateY(-3px); background: var(--gold-light); }
+    .lang-btn.secondary:hover{ background: rgba(74,44,23,.08); }
+  }
+
+  /* ================= SLIDE DECK ================= */
+  #site{
+    opacity:0; transition: opacity .7s ease;
+    height:100%; height:100vh; height:100dvh; height:var(--app-vh, 100dvh);
+  }
+  #site.site-visible{ opacity:1; }
+
+  #slides{
+    height:100%; height:100vh; height:100dvh; height:var(--app-vh, 100dvh);
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    overflow-x:hidden;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; /* Firefox: no scrollbar */
+    -ms-overflow-style:none; /* old Edge/IE: no scrollbar */
+  }
+  #slides::-webkit-scrollbar{ display:none; width:0; height:0; } /* Safari/Chrome: no scrollbar */
+
+  .slide{
+    flex: 0 0 100%;
+    width:100%;
+    height:100%; height:100vh; height:100dvh; height:var(--app-vh, 100dvh);
+    scroll-snap-align:start;
+    scroll-snap-stop: always;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .slide::-webkit-scrollbar{ display:none; width:0; height:0; }
+
+  .slide-inner{
+    position:relative; z-index:2;
+    flex:1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding: 8vh 7vw 9vh;
+    max-width: 640px;
+    margin: 0 auto;
+    width:100%;
+  }
+
+  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .slide.in-view .reveal{ opacity:1; transform:translateY(0); }
+  .reveal:nth-child(1){ transition-delay:.05s; }
+  .reveal:nth-child(2){ transition-delay:.15s; }
+  .reveal:nth-child(3){ transition-delay:.25s; }
+  .reveal:nth-child(4){ transition-delay:.35s; }
+  .reveal:nth-child(5){ transition-delay:.45s; }
+
+  .slide-dark{ background: linear-gradient(170deg, #fffdf8, #f3e6c8); color: var(--sea-deep); }
+  .slide-light{ background: linear-gradient(180deg, var(--sand), var(--sand-2)); color: var(--ink); }
+
+  /* ---------------- HERO ---------------- */
+  .arabic-line{
+    font-family: var(--arabic-quran);
+    font-size: 1.05rem;
+    color: var(--gold);
+    opacity:.95;
+    margin-bottom: 1.3rem;
+  }
+  .hero .eyebrow{
+    color: var(--sea); margin-bottom: 1.3rem;
+    letter-spacing:.02em; text-transform:none; font-style:italic;
+    font-size:.92rem; line-height:1.6; max-width:420px; margin-inline:auto;
+    font-weight:400;
+  }
+  [dir="rtl"] .hero .eyebrow{ margin-bottom: 1.8rem; }
+  .names{
+    font-family: var(--serif-script);
+    font-weight: 700;
+    font-size: clamp(3.6rem, 16vw, 6.4rem);
+    line-height: 1;
+    color: var(--sea-deep);
+    text-shadow: 0 0 34px rgba(201,162,39,.22);
+    margin-top:.2rem;
+  }
+  [dir="rtl"] .names{
+    font-size: clamp(2.4rem, 11vw, 4.4rem);
+    line-height: 1.5;
+    margin-top: .6rem;
+  }
+  .names .amp{ color: var(--gold); font-size: .68em; padding: 0 .04em; }
+  .hero-sub{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--sea);
+    margin-top: 1.1rem;
+    max-width: 460px;
+  }
+  .hero-date{
+    margin-top: 1.9rem;
+    font-family: var(--serif-display);
+    font-size: 1.2rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color: var(--sea-deep);
+  }
+  [dir="rtl"] .hero-date{ letter-spacing:0; text-transform:none; font-family: var(--arabic); font-size:1.2rem; }
+  .hero-date span{ color: var(--gold); }
+
+  .swipe-hint{
+    position:absolute; bottom: 5vh; left:50%; transform:translateX(-50%);
+    display:flex; align-items:center; gap:8px;
+    color: var(--sea); opacity:.85; font-size:.68rem;
+    letter-spacing:.28em; text-transform:uppercase;
+    animation: nudge 2.2s ease-in-out infinite;
+    z-index:3;
+  }
+  [dir="rtl"] .swipe-hint{ letter-spacing:0; font-family: var(--arabic); }
+  @keyframes nudge{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,6px);} }
+  .swipe-hint svg{ width:14px; height:14px; }
+  .swipe-hint.hidden{ opacity:0; pointer-events:none; }
+
+  /* ---------------- COUNTDOWN ---------------- */
+  .countdown{ display:flex; flex-wrap:wrap; gap: 1rem; justify-content:center; margin-top: 2.2rem; }
+  .cd-unit{
+    background: linear-gradient(160deg, var(--sea), var(--sea-deep));
+    color: var(--cream-text);
+    width: 108px; padding: 1.5rem 0 1.2rem;
+    border: 1px solid rgba(201,162,39,.45);
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 34px -18px rgba(74,44,23,.4);
+  }
+  .cd-num{ font-family: var(--serif-display); font-size: 2.2rem; font-weight:600; color: var(--gold); line-height:1; }
+  .cd-label{ margin-top:.45rem; font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color: var(--cream-text); }
+  .countdown-note{ margin-top: 1.6rem; font-style: italic; color: var(--sea); }
+  [dir="rtl"] .countdown-note{ font-style:normal; color: var(--sea-deep); }
+
+  /* ---------------- DETAILS ---------------- */
+  .card-icon-wrap{
+    width:60px; height:60px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, rgba(201,162,39,.24), rgba(201,162,39,.05));
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1.3rem;
+    border: 1px solid rgba(201,162,39,.5);
+  }
+  .card-icon{ width:28px; height:28px; color: var(--gold); }
+  .slide-title{ font-family: var(--serif-display); font-weight:600; font-size: clamp(1.9rem,7vw,2.5rem); margin: .3rem 0 .9rem; }
+  .slide-light .slide-title{ color: var(--sea-deep); }
+  .slide-dark .slide-title{ color: var(--sea-deep); }
+  .detail-text{ font-size: 1.02rem; line-height:1.7; max-width: 420px; }
+  .detail-meta{
+    margin-top:1.3rem; font-size:.92rem; letter-spacing:.03em;
+    padding-top:1rem; border-top: 1px solid rgba(74,44,23,.18);
+    color: var(--sea-deep);
+  }
+  [dir="rtl"] .detail-meta{ line-height:1.9; }
+
+  .details-grid{
+    margin-top: 1.6rem; width:100%;
+    display:flex; flex-direction:column; gap:1.4rem;
+  }
+  .detail-card{
+    background: rgba(201,162,39,.06);
+    border: 1px solid rgba(201,162,39,.35);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.5rem;
+    text-align: center;
+  }
+  .detail-card .card-icon-wrap{ margin: 0 auto 1rem; }
+  .detail-card h3{
+    font-family: var(--serif-display); font-weight:600; font-size:1.4rem;
+    color: var(--gold); margin-bottom:.6rem;
+  }
+  .detail-card p{ font-size:.96rem; line-height:1.6; color: var(--sea); }
+  .detail-card .detail-meta{ color: var(--sea-deep); border-top-color: rgba(74,44,23,.18); }
+  @media (min-width: 640px){
+    .details-grid{ flex-direction:row; }
+    .detail-card{ flex:1; }
+  }
+
+  /* ---------------- LOCATION ---------------- */
+  .venue-name{
+    font-family: var(--serif-display); font-weight:600; font-size:1.12rem;
+    color: var(--sea-deep); margin-top:1.8rem; margin-bottom:.4rem;
+    text-align:center;
+  }
+  .venues-wrap .venue-name:first-child{ margin-top:0; }
+  .venue-name .tag{ font-family: var(--serif-display); font-style:italic; font-size:.76rem; color: var(--gold); margin-inline-start:.5em; }
+  .map-wrap{
+    margin-top: .3rem; width:100%;
+    border: 1px solid var(--gold);
+    padding: 7px;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 44px -24px rgba(74,44,23,.25);
+  }
+  .map-frame{ width:100%; aspect-ratio: 16/10; border:0; border-radius: calc(var(--radius-lg) - 7px); }
+  .directions-btn{
+    display:inline-block; margin-top:.9rem;
+    font-family: var(--serif-display); letter-spacing:.1em; text-transform:uppercase;
+    font-size:.76rem; text-decoration:none;
+    color: var(--cream-text); background: var(--sea);
+    padding: .75rem 1.7rem; border:1px solid var(--gold);
+    border-radius: 999px;
+    transition: background .25s ease, color .25s ease, transform .2s ease;
+  }
+  .directions-btn:active{ transform: scale(.96); }
+  @media (hover:hover){ .directions-btn:hover{ background: var(--gold); color: var(--sea-deep); } }
+  .venues-wrap{ width:100%; }
+
+  /* ---------------- THANK YOU / FOOTER SLIDE ---------------- */
+  .monogram{ font-family: var(--serif-script); font-size: 3.4rem; color: var(--gold); }
+  .footer-line{ margin-top: 1rem; font-size:.78rem; letter-spacing:.15em; text-transform:uppercase; color: var(--sea); }
+  [dir="rtl"] .footer-line{ letter-spacing:0; font-family: var(--arabic); }
+
+  /* ================= NAVIGATION CHROME ================= */
+  #lang-switch{
+    position:fixed; top: max(14px, env(safe-area-inset-top)); right:14px; z-index:60;
+    display:flex; gap:.35rem;
+    background: rgba(74,44,23,.55);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(201,162,39,.4);
+    border-radius: 999px;
+    padding: .3rem;
+    opacity:0; pointer-events:none;
+    transition: opacity .5s ease;
+  }
+  #lang-switch.visible{ opacity:1; pointer-events:auto; }
+  [dir="rtl"] #lang-switch{ right:auto; left:14px; }
+  #lang-switch button{
+    font-family: var(--serif-display); font-size:.7rem; letter-spacing:.08em;
+    text-transform:uppercase; cursor:pointer; border:none;
+    background: transparent; color: var(--cream-text);
+    padding: .4rem .8rem; border-radius:999px;
+    transition: background .25s ease, color .25s ease;
+  }
+  #lang-switch button.active{ background: var(--gold); color: var(--sea-deep); }
+
+  #dots{
+    position:fixed; top:50%; right: max(6px, env(safe-area-inset-right));
+    transform:translateY(-50%);
+    z-index:60;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    background: rgba(74,44,23,.28);
+    padding:.5rem .3rem;
+    border-radius:999px;
+    backdrop-filter: blur(4px);
+    opacity:0; transition: opacity .5s ease;
+  }
+  [dir="rtl"] #dots{ right:auto; left: max(6px, env(safe-area-inset-left)); }
+  #dots.visible{ opacity:1; }
+  #dots button{
+    position:relative;
+    width:6px; height:6px; border-radius:50%;
+    border:1px solid rgba(201,162,39,.7);
+    background: transparent;
+    padding:0; cursor:pointer; flex-shrink:0;
+    transition: background .25s ease, height .25s ease;
+  }
+  #dots button::before{ content:""; position:absolute; inset:-9px; } /* larger invisible tap area */
+  #dots button.active{ background: var(--gold); height:16px; border-radius:5px; }
+
+  .nav-arrow{
+    position:fixed; left:50%; transform:translateX(-50%);
+    z-index:60; width:44px; height:44px; border-radius:50%;
+    background: rgba(74,44,23,.45); border:1px solid rgba(201,162,39,.5);
+    color: var(--gold); display:none; align-items:center; justify-content:center;
+    cursor:pointer; backdrop-filter: blur(6px);
+    opacity:0; transition: opacity .4s ease, background .2s ease;
+  }
+  .nav-arrow.visible{ opacity:1; }
+  .nav-arrow:active{ background: rgba(74,44,23,.7); }
+  #arrow-prev{ top:18px; }
+  #arrow-next{ bottom:18px; }
+  .chevron{ width:18px; height:18px; }
+
+  /* Desktop enhancements */
+  @media (min-width: 860px){
+    .nav-arrow{ display:flex; }
+    .slide-inner{ padding: 6vh 10vw 8vh; }
+    #dots{ gap:10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .swipe-hint{animation:none;}
+    #gate, #site, .reveal{ transition:none; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- ================= LANGUAGE GATE ================= -->
+<div id="gate">
+  <div class="wave-bg"></div>
+  <div class="gate-inner">
+    <p class="gate-title" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumaima</p>
+    <p class="gate-subtitle" id="gate-subtitle">Choisissez votre langue · اختر لغتك</p>
+    <div class="lang-choices">
+      <button class="lang-btn" data-lang="fr">Français</button>
+      <button class="lang-btn secondary" data-lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<!-- persistent chrome once inside the site -->
+<div id="lang-switch">
+  <button data-lang="fr">FR</button>
+  <button data-lang="ar">ع</button>
+</div>
+
+<button id="arrow-prev" class="nav-arrow" aria-label="Précédent">
+  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<button id="arrow-next" class="nav-arrow" aria-label="Suivant">
+  <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+
+<div id="dots"></div>
+
+<!-- ================= SITE ================= -->
+<div id="site">
+  <div id="slides">
+
+    <!-- SLIDE 1 — HERO -->
+    <section class="slide slide-dark" data-title="Youssef &amp; Oumaima">
+      <div class="wave-bg"></div>
+      <div class="slide-inner">
+        <p class="arabic-line reveal">بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ</p>
+        <p class="eyebrow reveal" data-i18n="hero.invite">La famille de Mourad Mokdadi et la famille de Mustafa Lamti sont honorées de vous convier au mariage de leurs enfants</p>
+        <h1 class="names reveal" data-i18n="names.full">Youssef<span class="amp">&amp;</span>Oumaima</h1>
+        <p class="hero-sub reveal" data-i18n="hero.sub">« Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses… »</p>
+        <!-- EDIT ME: wedding date & cities -->
+        <p class="hero-date reveal" data-i18n="hero.date">28 <span>Août</span> 2026 — M'saken &amp; Kairouan, Tunisie</p>
+      </div>
+      <div class="swipe-hint" id="swipe-hint">
+        <span data-i18n="hero.scroll">Glissez vers le haut</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 — COUNTDOWN -->
+    <section class="slide slide-light" data-title="Countdown">
+      <div class="slide-inner">
+        <p class="eyebrow reveal" style="color:var(--coral)" data-i18n="countdown.eyebrow">Le compte à rebours</p>
+        <h2 class="slide-title reveal" data-i18n="countdown.title">Il reste encore un peu de patience…</h2>
+        <div class="divider reveal">
+          <div class="line"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1"><path d="M12 2l2.9 6.6L22 9.5l-5 4.9L18.4 22 12 18.3 5.6 22 7 14.4 2 9.5l7.1-.9z"/></svg>
+          <div class="line"></div>
+        </div>
+        <div class="countdown reveal" id="countdown">
+          <div class="cd-unit"><div class="cd-num ltr-num" id="cd-days">00</div><div class="cd-label" data-i18n="countdown.days">Jours</div></div>
+          <div class="cd-unit"><div class="cd-num ltr-num" id="cd-hours">00</div><div class="cd-label" data-i18n="countdown.hours">Heures</div></div>
+          <div class="cd-unit"><div class="cd-num ltr-num" id="cd-mins">00</div><div class="cd-label" data-i18n="countdown.mins">Minutes</div></div>
+          <div class="cd-unit"><div class="cd-num ltr-num" id="cd-secs">00</div><div class="cd-label" data-i18n="countdown.secs">Secondes</div></div>
+        </div>
+        <p class="countdown-note reveal" id="countdown-note" data-i18n="countdown.note">Nous avons hâte de célébrer ces jours avec vous.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — DETAILS: WTEYA + MARIAGE -->
+    <section class="slide slide-dark" data-title="Détails">
+      <div class="wave-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow reveal" style="color:var(--gold)" data-i18n="details.eyebrow">Le programme</p>
+        <h2 class="slide-title reveal" data-i18n="details.title">Détails de la célébration</h2>
+
+        <div class="details-grid">
+          <div class="detail-card reveal">
+            <div class="card-icon-wrap">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v4M5 8l2 2M19 8l-2 2M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
+            </div>
+            <h3 data-i18n="details.wteyaTitle">La Wteya</h3>
+            <p data-i18n="details.wteyaText">Une soirée traditionnelle pour célébrer les préparatifs avant le grand jour.</p>
+            <!-- EDIT ME -->
+            <p class="detail-meta" data-i18n="details.wteyaMeta">28 Août 2026 — 21h30<br>Salle des fêtes The Queen, M'saken</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="card-icon-wrap">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 21v-7a4 4 0 014-4h8a4 4 0 014 4v7M4 21h16M8 10V6a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+            </div>
+            <h3 data-i18n="details.weddingTitle">Le Mariage</h3>
+            <p data-i18n="details.weddingText">Dîner, musique et danse pour célébrer ensemble ce jour unique.</p>
+            <!-- EDIT ME: confirm this date -->
+            <p class="detail-meta" data-i18n="details.weddingMeta">29 Août 2026 — 20h00<br>Salle des fêtes Champs Élysées, Kairouan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 — LOCATIONS (both venues) -->
+    <section class="slide slide-dark" data-title="Lieux" id="location">
+      <div class="wave-bg"></div>
+      <div class="slide-inner">
+        <p class="eyebrow reveal" style="color:var(--gold)" data-i18n="location.eyebrow">Comment nous rejoindre</p>
+        <h2 class="slide-title reveal" data-i18n="location.title">Les lieux de la célébration</h2>
+
+        <div class="venues-wrap reveal">
+          <p class="venue-name"><bdi>Salle des fêtes The Queen</bdi> — <span data-i18n="location.venue1City">M'saken</span> <span class="tag" data-i18n="location.venue1Tag">(Wteya)</span></p>
+          <div class="map-wrap">
+            <!-- EDIT ME: replace src with this venue's Google Maps embed link -->
+            <iframe class="map-frame"
+              src="https://www.google.com/maps?q=Salle+des+fêtes+The+Queen+M%27saken+Tunisie&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Salle des fêtes The Queen, M'saken"></iframe>
+          </div>
+          <p class="venue-name"><bdi>Salle des fêtes Champs Élysées</bdi> — <span data-i18n="location.venue2City">Kairouan</span> <span class="tag" data-i18n="location.venue2Tag">(Mariage)</span></p>
+          <div class="map-wrap">
+            <!-- EDIT ME: replace src with this venue's Google Maps embed link -->
+            <iframe class="map-frame"
+              src="https://www.google.com/maps?q=Salle+des+fêtes+Champs+Élysées+Kairouan+Tunisie&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Salle des fêtes Champs Élysées, Kairouan"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 — THANK YOU -->
+    <section class="slide slide-dark" data-title="Merci">
+      <div class="wave-bg"></div>
+      <div class="slide-inner">
+        <div class="monogram reveal" data-i18n="names.monogram">Y &amp; O</div>
+        <p class="footer-line reveal" data-i18n="footer.line">28–29 Août 2026 · M'saken &amp; Kairouan, Tunisie</p>
+      </div>
+    </section>
+
+  </div><!-- /#slides -->
+</div><!-- /#site -->
+
+<script>
+  /* =========================================================
+     TRANSLATIONS
+     ========================================================= */
+  const translations = {
+    fr: {
+      names: {
+        full: 'Youssef<span class="amp">&amp;</span>Oumaima',
+        monogram: 'Y <span class="amp">&amp;</span> O'
+      },
+      hero: {
+        invite: "La famille de Mourad Mokdadi et la famille de Mustafa Lamti sont honorées de vous convier au mariage de leurs enfants",
+        sub: "« Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses afin que vous viviez en tranquillité avec elles… »",
+        date: '28 <span>Août</span> 2026 — M\'saken &amp; Kairouan, Tunisie',
+        scroll: "Glissez vers le haut"
+      },
+      countdown: {
+        eyebrow: "Le compte à rebours",
+        title: "Il reste encore un peu de patience…",
+        note: "Nous avons hâte de célébrer ces jours avec vous.",
+        doneNote: "Aujourd'hui, nous célébrons ! 🤍",
+        days: "Jours", hours: "Heures", mins: "Minutes", secs: "Secondes"
+      },
+      details: {
+        eyebrow: "Le programme",
+        title: "Détails de la célébration",
+        wteyaTitle: "La Wteya",
+        wteyaText: "Une soirée traditionnelle pour célébrer les préparatifs avant le grand jour.",
+        wteyaMeta: "28 Août 2026 — 21h30<br><bdi>Salle des fêtes The Queen</bdi>, M'saken",
+        weddingTitle: "Le Mariage",
+        weddingText: "Dîner, musique et danse pour célébrer ensemble ce jour unique.",
+        weddingMeta: "29 Août 2026 — 20h00<br><bdi>Salle des fêtes Champs Élysées</bdi>, Kairouan"
+      },
+      location: {
+        eyebrow: "Comment nous rejoindre",
+        title: "Les lieux de la célébration",
+        venue1City: "M'saken",
+        venue1Tag: "(Wteya)",
+        venue2City: "Kairouan",
+        venue2Tag: "(Mariage)",
+        directions: "Obtenir l'itinéraire"
+      },
+      footer: { line: "28–29 Août 2026 · M'saken &amp; Kairouan, Tunisie" },
+      gateSubtitle: "Choisissez votre langue · اختر لغتك"
+    },
+    ar: {
+      names: {
+        full: 'يوسف<span class="amp"> و </span>أميمة',
+        monogram: 'ي <span class="amp">و</span> أ'
+      },
+      hero: {
+        invite: "تتشرف عائلة مراد مقدادي وعائلة مصطفى لمطي بدعوتكم لحضور حفل زفاف ابنيهما",
+        sub: "«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً»",
+        date: '<bdi>28</bdi> أوت <bdi>2026</bdi> — مساكن والقيروان، تونس',
+        scroll: "اسحب للأعلى لتكتشف المزيد"
+      },
+      countdown: {
+        eyebrow: "العد التنازلي",
+        title: "لم يتبقَّ سوى القليل من الصبر…",
+        note: "لا يسعنا الانتظار للاحتفال بهذه الأيام معكم.",
+        doneNote: "اليوم، نحتفل! 🤍",
+        days: "أيام", hours: "ساعات", mins: "دقائق", secs: "ثواني"
+      },
+      details: {
+        eyebrow: "برنامج الاحتفال",
+        title: "تفاصيل الاحتفال",
+        wteyaTitle: "الوطية",
+        wteyaText: "أمسية تقليدية للاحتفال بالتحضيرات قبل يوم الزفاف.",
+        wteyaMeta: '<bdi>28</bdi> أوت <bdi>2026</bdi> — <bdi>21:30</bdi><br><bdi>Salle des fêtes The Queen</bdi>، مساكن',
+        weddingTitle: "حفل الزفاف",
+        weddingText: "عشاء وموسيقى ورقص للاحتفال معًا بهذا اليوم الفريد.",
+        weddingMeta: '<bdi>29</bdi> أوت <bdi>2026</bdi> — <bdi>20:00</bdi><br><bdi>Salle des fêtes Champs Élysées</bdi>، القيروان'
+      },
+      location: {
+        eyebrow: "كيف تصلون إلينا",
+        title: "مواقع الاحتفال",
+        venue1City: "مساكن",
+        venue1Tag: "(الوطية)",
+        venue2City: "القيروان",
+        venue2Tag: "(الزفاف)",
+        directions: "احصل على الاتجاهات"
+      },
+      footer: { line: '<bdi>28–29</bdi> أوت <bdi>2026</bdi> · مساكن والقيروان، تونس' },
+      gateSubtitle: "اختر لغتك · Choisissez votre langue"
+    }
+  };
+
+  /* =========================================================
+     VIEWPORT HEIGHT FIX — keeps every slide exactly the same
+     height while swiping on mobile Safari/Chrome, where the
+     address bar showing/hiding otherwise changes 100vh mid-swipe.
+     100dvh (set in CSS) already handles this in current browsers;
+     this is a belt-and-belt fallback for older in-app browsers
+     (e.g. Instagram/Facebook's built-in browser on iOS).
+     ========================================================= */
+  function setAppVH(){
+    const h = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    document.documentElement.style.setProperty('--app-vh', h + 'px');
+  }
+  setAppVH();
+  window.addEventListener('resize', setAppVH);
+  window.addEventListener('orientationchange', setAppVH);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', setAppVH);
+
+  let currentLang = 'fr';
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = key.split('.').reduce((o,k) => (o && o[k] !== undefined) ? o[k] : null, translations[lang]);
+      if (val !== null) el.innerHTML = val;
+    });
+
+    document.getElementById('gate-subtitle').textContent = translations[lang].gateSubtitle;
+    document.getElementById('arrow-prev').setAttribute('aria-label', lang === 'ar' ? 'السابق' : 'Précédent');
+    document.getElementById('arrow-next').setAttribute('aria-label', lang === 'ar' ? 'التالي' : 'Suivant');
+
+    document.querySelectorAll('#lang-switch button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  function openSite(){
+    document.getElementById('gate').classList.add('gate-hidden');
+    document.getElementById('lang-switch').classList.add('visible');
+    document.getElementById('dots').classList.add('visible');
+    document.querySelectorAll('.nav-arrow').forEach(a => a.classList.add('visible'));
+    setTimeout(() => {
+      document.body.classList.remove('locked');
+      document.getElementById('site').classList.add('site-visible');
+    }, 250);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => { applyLang(btn.dataset.lang); openSite(); });
+  });
+  document.querySelectorAll('#lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  /* ---------------- SLIDE DECK: dots, arrows, reveal-on-view ---------------- */
+  const slidesEl = document.getElementById('slides');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsEl = document.getElementById('dots');
+
+  slides.forEach((s, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Slide ' + (i+1));
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      slides[i].scrollIntoView({ behavior:'smooth', inline:'start', block:'nearest' });
+    });
+    dotsEl.appendChild(dot);
+  });
+  const dots = Array.from(dotsEl.children);
+
+  let activeIndex = 0;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = slides.indexOf(entry.target);
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        if (entry.intersectionRatio > 0.6){
+          activeIndex = idx;
+          dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+        }
+      }
+    });
+  }, { root: slidesEl, threshold: [0, 0.6, 1] });
+  slides.forEach(s => io.observe(s));
+
+  document.getElementById('arrow-prev').addEventListener('click', () => {
+    const target = Math.max(0, activeIndex - 1);
+    slides[target].scrollIntoView({ behavior:'smooth', inline:'start', block:'nearest' });
+  });
+  document.getElementById('arrow-next').addEventListener('click', () => {
+    const target = Math.min(slides.length - 1, activeIndex + 1);
+    slides[target].scrollIntoView({ behavior:'smooth', inline:'start', block:'nearest' });
+  });
+
+  // hide the swipe hint after first interaction with the deck
+  const swipeHint = document.getElementById('swipe-hint');
+  slidesEl.addEventListener('scroll', () => swipeHint.classList.add('hidden'), { once:true, passive:true });
+
+  // keyboard arrows for desktop convenience
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') document.getElementById('arrow-next').click();
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') document.getElementById('arrow-prev').click();
+  });
+
+  /* ---------------- COUNTDOWN ----------------
+     Counts down to the Wteya (28 Aug, 21:30) — the first celebration.
+     The wedding's date wasn't given explicitly (only its time, 20:00),
+     so it's set here to the day after the Wteya. Change either date
+     below, or the WEDDING_DATE target, if that's not correct. */
+  // EDIT ME: exact date & time
+  const WEDDING_DATE = new Date("2026-08-28T21:30:00");
+
+  const els = {
+    days: document.getElementById('cd-days'),
+    hours: document.getElementById('cd-hours'),
+    mins: document.getElementById('cd-mins'),
+    secs: document.getElementById('cd-secs'),
+  };
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function tick(){
+    const now = new Date();
+    let diff = WEDDING_DATE - now;
+    if (diff <= 0){
+      els.days.textContent = '00'; els.hours.textContent = '00';
+      els.mins.textContent = '00'; els.secs.textContent = '00';
+      document.getElementById('countdown-note').textContent = translations[currentLang].countdown.doneNote;
+      clearInterval(timer);
+      return;
+    }
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    els.days.textContent = pad(d); els.hours.textContent = pad(h);
+    els.mins.textContent = pad(m); els.secs.textContent = pad(s);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Youssef &amp; Oumaima — Notre Mariage</title>
 <meta name="description" content="Vous êtes cordialement invités au mariage de Youssef et Oumaima.">
